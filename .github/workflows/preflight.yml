@@ -1,0 +1,28 @@
+name: run with preflight
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+
+jobs:
+  build:
+    name: Build your code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v2
+
+
+      # set up preflight
+      - name: Setup Preflight
+        uses: spectralops/setup-preflight@v1
+
+
+      - name: Install w/curl protected with Preflight
+        run:  curl -fsSL https://deno.land/x/install/install.sh | preflight run sha256=561aa9d6533ca228c43e784bf9fe8b74c8bfd8c443386dbf20bb714ac2969ceb
+      
+      - name: do stuff
+        run: echo stuff
