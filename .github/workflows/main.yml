@@ -13,4 +13,4 @@ jobs:
         with:
            command: test wizard# optional, default is test
         env:
-          SNYK_TOKEN: ${{ secrets.TOKEN }}
+          SNYK_TOKEN: f41f25fd-2bf8-4ecb-9f27-28abbba5303a
