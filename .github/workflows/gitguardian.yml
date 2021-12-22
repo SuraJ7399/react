@@ -2,7 +2,7 @@ name: GitGuardian scan
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master,changing-trigger ]
 
 
 jobs:
