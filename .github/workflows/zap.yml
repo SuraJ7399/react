@@ -3,7 +3,6 @@ name: .NET
 on:
   push:
     branches: [ changing-trigger ]
-
 jobs:
   build:
 
