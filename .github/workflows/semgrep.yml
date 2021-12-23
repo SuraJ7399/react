@@ -1,5 +1,7 @@
 name: Semgrep
-on: [ semgrep ]
+on:
+  push:
+    branches: [ semgrep ]
 jobs:
   semgrep:
     runs-on: ubuntu-latest
