@@ -22,9 +22,7 @@ jobs:
           github_token: ${{ secrets.TOKEN_OF_GITHUB }}
           issue_assignees: oke-py
           issue_labels: vulnerability,test
+          run: npm audit fix --force
           dedupe_issues: true
-          
-      - name: If Failure
-#       - uses: oke-py/npm-audit-action@v1.8.2
-        run: npm audit fix --force
-        if: failure()
+     
+       
