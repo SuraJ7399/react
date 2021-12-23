@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: install dependencies
-        run: npm i
+        run: npm install --save lodash@4.17.5
       - uses: oke-py/npm-audit-action@v1.8.2
         with:
           audit_level: moderate
@@ -23,6 +23,6 @@ jobs:
           issue_assignees: oke-py
           issue_labels: vulnerability,test
           run: npm audit fix --force
-          
+          dedupe_issues: true
      
        
