@@ -23,6 +23,6 @@ jobs:
           issue_assignees: oke-py
           issue_labels: vulnerability,test
           run: npm audit fix --force
-          dedupe_issues: true
+          
      
        
