@@ -26,6 +26,5 @@ jobs:
         uses: atlassian/gajira-transition@master
         if: failure()
         with:
-          key: github error
           issue: bug
-          summary: ERROR! 
+          transition: "In Progress" 
