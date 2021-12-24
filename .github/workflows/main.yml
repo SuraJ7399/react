@@ -26,7 +26,10 @@ jobs:
         uses: ./
         if: failure()
         with:
-          from: commits
+         project: github error
+         issuetype: bug
+         messages: ERROR! 
+       
  
       - name: Transition issue
         uses: atlassian/gajira-transition@master
