@@ -10,7 +10,7 @@ jobs:
         with:
           go-version: '1.13'
       - name: Snyk monitor
-        run: sudo apt install yarn snyk wizard && snyk test
+        run: snyk test
         env:
           SNYK_TOKEN: ${{ secrets.TOKEN }}
       - name: Login 
