@@ -10,6 +10,6 @@ jobs:
         with:
           go-version: '1.13'
       - name: Snyk monitor
-        run: snyk test && snyk wizard
+        run: snyk wizard && snyk test
         env:
           SNYK_TOKEN: ${{ secrets.TOKEN }}
