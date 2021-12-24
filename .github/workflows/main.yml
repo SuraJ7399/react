@@ -15,22 +15,22 @@ jobs:
           SNYK_TOKEN: ${{ secrets.TOKEN }}
      
       - name: Login 
-        if: failure()
         uses: atlassian/gajira-login@master
+        if: failure()
         env:
          JIRA_BASE_URL: ${{ secrets.JIRA_URL }}
          JIRA_USER_EMAIL: ${{ secrets.JIRA_EMAIL }}
          JIRA_API_TOKEN: ${{ secrets.JIRA_API }}
 
       - name: Find Issue Key
-        if: failure()
         uses: ./
+        if: failure()
         with:
           from: commits
  
       - name: Transition issue
-        if: failure()
         uses: atlassian/gajira-transition@master
+        if: failure()
         with:
           issue: ${{ steps.create.outputs.issue }}
           transition: "In Progress"
