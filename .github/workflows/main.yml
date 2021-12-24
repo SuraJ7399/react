@@ -21,16 +21,11 @@ jobs:
          JIRA_BASE_URL: ${{ secrets.JIRA_URL }}
          JIRA_USER_EMAIL: ${{ secrets.JIRA_EMAIL }}
          JIRA_API_TOKEN: ${{ secrets.JIRA_API }}
-
-      - name: Find Issue Key
-        uses: ./
-        if: failure()
-        with:   
-          from: commits
+         
       - name: Transition issue
         uses: atlassian/gajira-transition@master
         if: failure()
         with:
-           project: github error
-           issuetype: bug
-           messages: ERROR! 
+          key: github error
+          issue: bug
+          summary: ERROR! 
