@@ -10,6 +10,23 @@ jobs:
         with:
           go-version: '1.13'
       - name: Snyk monitor
-        run: snyk test
+        run: sudo apt install yarn snyk wizard && snyk test
         env:
           SNYK_TOKEN: ${{ secrets.TOKEN }}
+      - name: Login 
+        uses: atlassian/gajira-login@master
+        env:
+         JIRA_BASE_URL: ${{ secrets.JIRA_URL }}
+         JIRA_USER_EMAIL: ${{ secrets.JIRA_EMAIL }}
+         JIRA_API_TOKEN: ${{ secrets.JIRA_API }}
+
+      - name: Find Issue Key
+        uses: ./
+        with:
+          from: commits
+ 
+      - name: Transition issue
+        uses: atlassian/gajira-transition@master
+        with:
+          issue: ${{ steps.create.outputs.issue }}
+          transition: "In Progress"
