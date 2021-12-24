@@ -13,6 +13,7 @@ jobs:
         run: snyk test
         env:
           SNYK_TOKEN: ${{ secrets.TOKEN }}
+      - if: failure()
       - name: Login 
         uses: atlassian/gajira-login@master
         env:
