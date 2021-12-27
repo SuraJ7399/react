@@ -1,5 +1,7 @@
 name: Snyk example
-on: push
+on: 
+  push:
+    branches: [ master ]
 jobs:
   security:
     runs-on: ubuntu-latest
