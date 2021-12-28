@@ -24,24 +24,4 @@ jobs:
           issue_labels: vulnerability,test
           dedupe_issues: true
           run: npm audit fix --force
-          
-      - name: Login to Jira
-        uses: atlassian/gajira-login@master
-        if: failure()
-        env:
-         JIRA_BASE_URL: ${{ secrets.JIRA_URL }}
-         JIRA_USER_EMAIL: ${{ secrets.JIRA_EMAIL }}
-         JIRA_API_TOKEN: ${{ secrets.JIRA_API }}
-         
-      - name: Notify issue
-        uses: atlassian/gajira-create@master
-        if: failure()
-        with:
-          project: GE
-          issuetype: Bug
-          summary: Congratulations! ${{ github.workflow }} failed in ${{ github.repository }}
-          pipeline-id: ${{ github.repository }} && ${{ github.workflow }}
-          build-number: ${{ github.run_number }}
-          build-state: "${{ env.BUILD_STATE }}"
-          build-url: '${{github.event.repository.url}}/actions/runs/${{github.run_id}}'
-  
+     
